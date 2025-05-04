@@ -29,12 +29,12 @@ namespace pryApellidoConexionBD
             try
             {
                 SqlConnection conexion = conexionBD.Conectar();
-                MessageBox.Show("Conexión exitosa");
+                MessageBox.Show("✅ Conexión exitosa a la base de datos.");
                 conexion.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al conectar: " + ex.Message);
+                MessageBox.Show("❌ Error al conectar: " + ex.Message);
             }
         }
 
