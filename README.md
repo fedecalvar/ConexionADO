@@ -25,3 +25,15 @@ INSERT INTO Productos (Nombre, Descripcion, Precio, Stock, CategoriaId) VALUES
 ('Notebook Lenovo', 'Notebook i5 8GB RAM', 850000, 10, 1),
 ('Licuadora Philips', '600W, vaso de vidrio', 320000, 5, 2),
 ('Camisa Blanca', 'Manga larga, algodón', 180000, 15, 3);
+
+CREATE TABLE Contactos (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Nombre VARCHAR(50) NOT NULL,
+    Apellido VARCHAR(50) NOT NULL,
+    Telefono VARCHAR(20),
+    Correo VARCHAR(100),
+    Categoria VARCHAR(50)
+);
+
+INSERT INTO Contactos (Nombre, Apellido, Telefono, Correo, Categoria)
+VALUES ('Juan', 'Pérez', '3512345678', 'juan.perez@mail.com', 'Amigo');
