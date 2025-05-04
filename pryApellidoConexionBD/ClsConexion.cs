@@ -14,7 +14,7 @@ namespace pryApellidoConexionBD
         public SqlConnection Conectar()
         {
             SqlConnection conexion = new SqlConnection(cadenaConexion);
-            conexion.Open(); // Esto puede fallar, pero el try-catch va afuera
+            conexion.Open();
             return conexion;
         }
     }

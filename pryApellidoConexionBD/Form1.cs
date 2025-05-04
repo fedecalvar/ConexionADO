@@ -13,25 +13,28 @@ namespace pryApellidoConexionBD
 {
     public partial class Form1 : Form
     {
+
+        Form2 formContactos = new Form2();
         public Form1()
         {
             InitializeComponent();
+            formContactos.Show();
         }
 
         private void btnConexion_Click(object sender, EventArgs e)
         {
-            // llamada al metodo conectar()
+            
             ClsConexion conexionBD = new ClsConexion();
 
             try
             {
                 SqlConnection conexion = conexionBD.Conectar();
-                MessageBox.Show("✅ Conexión exitosa");
+                MessageBox.Show("Conexión exitosa");
                 conexion.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("❌ Error al conectar: " + ex.Message);
+                MessageBox.Show("Error al conectar: " + ex.Message);
             }
         }
 
