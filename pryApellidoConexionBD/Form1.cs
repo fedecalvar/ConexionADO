@@ -15,12 +15,18 @@ namespace pryApellidoConexionBD
     public partial class Form1 : Form
     {
 
-        Form2 formContactos = new Form2();
+        //Form2 formContactos = new Form2();
         public Form1()
         {
             InitializeComponent();
-            formContactos.Show();
+            //formContactos.Show();
+            btnActualizar.Enabled = false;
+            btnAgregar.Enabled = false;
+            btnConsultar.Enabled = false;
+            btnEliminar.Enabled = false;
         }
+
+        ClsConexion conexion = new ClsConexion();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -48,11 +54,71 @@ namespace pryApellidoConexionBD
             int stock = Convert.ToInt32(txtStock.Text);
             int categoriaId = Convert.ToInt32(cboCategoria.SelectedValue);
 
-            ClsConexion conexion = new ClsConexion();
+            // me permite usar los metodos que estan definidos dentro de la clase, como conectar o insertarproductos
+            // como en este caso
+            //ClsConexion conexion = new ClsConexion();
             conexion.InsertarProducto(nombre, descripcion, precio, stock, categoriaId);
 
             MessageBox.Show("✅ Producto agregado con éxito.");
         }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            //ClsConexion conexion = new ClsConexion();
+            conexion.Consultar();
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            conexion.Actualizar(txtNuevoNombre.Text, Convert.ToDecimal(txtNuevoPrecio.Text));
+            txtNuevoNombre.Clear();
+            txtNuevoPrecio.Clear();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            conexion.Eliminar(txtEliminar.Text);
+            txtEliminar.Clear();
+        }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            switch (txtAccion.Text)
+            {
+                case "1":
+                    btnActualizar.Enabled = false;
+                    btnAgregar.Enabled = true;
+                    btnConsultar.Enabled = false;
+                    btnEliminar.Enabled = false;
+                    break;
+                case "2":
+                    btnActualizar.Enabled = false;
+                    btnAgregar.Enabled = false;
+                    btnConsultar.Enabled = true;
+                    btnEliminar.Enabled = false;
+                    break;
+                case "3":
+                    btnActualizar.Enabled = true;
+                    btnAgregar.Enabled = false;
+                    btnConsultar.Enabled = false;
+                    btnEliminar.Enabled = false;
+                    break;
+                case "4":
+                    btnActualizar.Enabled = false;
+                    btnAgregar.Enabled = false;
+                    btnConsultar.Enabled = false;
+                    btnEliminar.Enabled = true;
+                    break;
+                default:
+                    MessageBox.Show("Numero inválido");
+                    btnActualizar.Enabled = false;
+                    btnAgregar.Enabled = false;
+                    btnConsultar.Enabled = false;
+                    btnEliminar.Enabled = false;
+                    break;
+            }
+        }
+
 
 
 
